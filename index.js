@@ -1,12 +1,12 @@
 // First Labour : Heracles vs Nemean Lion
 // use your Figher class here
 const Fighter = require('./src/Fighter')
-const debug = true;
+const debug = false;
 const figth_club = false;
 const coliser = true;
 
 const Heracles = new Fighter('🧔 Heracles', 20, 6);
-const Nemean = new Fighter('🦁 Lion', 11, 13);
+const Nemean = new Fighter('🦁 Lion', 12, 13);
 
 if(debug) {
     console.info(Heracles);
@@ -33,10 +33,12 @@ if (coliser) {
         console.info(`Round ${round}`)
         Heracles.figth(Nemean);
         Nemean.figth(Heracles);
-        console.log(Heracles.setLife())
-        console.log(Nemean.setLife());
-        console.log('Heracles dead ?'+Heracles.dead());
-        console.log('Lion dead ?'+Nemean.dead());
+        console.info(Heracles.setLife())
+        console.info(Nemean.setLife());
+        if(debug) {
+            console.log('Heracles dead ?'+Heracles.dead());
+            console.log('Lion dead ?'+Nemean.dead());
+        }
             if (Heracles.dead()) {
                 go = !Heracles.dead();
             }

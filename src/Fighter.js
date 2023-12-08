@@ -23,8 +23,8 @@ class Fighter {
         }
     }
     figth(figther) {
-        const  dammagePoint = Math.floor(Math.random() * this.strength);
-        const dodge = Math.floor(Math.random() * figther.dexterity);
+        const  dammagePoint = Math.floor(Math.random() * figther.strength);
+        const dodge = Math.floor(Math.random() * this.dexterity);
         const lostPointOfLife = dammagePoint - dodge;
         if (lostPointOfLife>0) {
             this.life = this.life - (dammagePoint - dodge);
@@ -36,13 +36,11 @@ class Fighter {
         }
     }
     deadCaractere(figther) {
-        console.log(this.dead())
         if(this.dead()) {
-            return `${this.name} is dead, ${figther.name} win !`;
-        } 
+            return `${this.name} is 💀, ${figther.name} 🏆 !`;
+        } else {
+            return `${this.name} live !`;
+        }
     }
-
-
 }
-
 module.exports = Fighter;

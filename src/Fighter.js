@@ -22,12 +22,17 @@ class Fighter {
             return false;
         }
     }
+    resurrected() {
+        this.life = MAX_LIFE;
+    }
+
     figth(figther) {
         const  dammagePoint = Math.floor(Math.random() * figther.strength);
         const dodge = Math.floor(Math.random() * this.dexterity);
         const lostPointOfLife = dammagePoint - dodge;
         if (lostPointOfLife>0) {
             this.life = this.life - (dammagePoint - dodge);
+            
             this.dead();
             return `${this.name} hit ${figther.name} attack = ${lostPointOfLife} !`;
            
@@ -35,11 +40,19 @@ class Fighter {
             return `${this.name} miss ${figther.name} !?`;
         }
     }
+    
     deadCaractere(figther) {
         if(this.dead()) {
             return `${this.name} is 💀, ${figther.name} 🏆 !`;
         } else {
             return `${this.name} live !`;
+        }
+    }
+    deadCaractereDataAnalyse() {
+        if(this.dead()) {
+            return `${this.name} 💀`;
+        } else {
+            return null;
         }
     }
 }

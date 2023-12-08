@@ -5,8 +5,8 @@ const debug = false;
 const figth_club = false;
 const coliser = true;
 
-const Heracles = new Fighter('🧔 Heracles', 20, 6);
-const Nemean = new Fighter('🦁 Lion', 12, 13);
+const Heracles = new Fighter('🧔 Heracles', 10, 6);
+const Nemean = new Fighter('🦁 Lion', 10, 6);
 
 if(debug) {
     console.info(Heracles);
@@ -23,9 +23,7 @@ if(figth_club) {
         console.log(Nemean.setLife());
     }
 }
-
-
-if (coliser) {
+const arena = () => {
     let round = 0
     let go = true;
     do {
@@ -51,5 +49,23 @@ if (coliser) {
         console.info(Heracles.deadCaractere(Nemean));
         console.info(Nemean.deadCaractere(Heracles));
       }
+      return {round: round, Player1: Heracles.deadCaractereDataAnalyse(), Player2: Nemean.deadCaractereDataAnalyse()};
+}
+
+if (coliser) {
+
+    //arena();
+ 
 
 }
+const dataAnalyse = [];
+if(coliser) {
+
+    for (let index = 0; index <= 50; index++) {
+        dataAnalyse.push(arena());
+        Nemean.resurrected();
+        Heracles.resurrected();
+    }
+   
+}
+console.info(dataAnalyse);

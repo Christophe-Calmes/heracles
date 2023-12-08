@@ -1,6 +1,7 @@
 // First Labour : Heracles vs Nemean Lion
 // use your Figher class here
-const Fighter = require('./src/Fighter')
+const Fighter = require('./src/Fighter');
+const DataAnalyse = require('./src/DataAnalyse');
 const debug = false;
 const figth_club = false;
 const coliser = true;
@@ -58,14 +59,17 @@ if (coliser) {
  
 
 }
-const dataAnalyse = [];
+const data = [];
 if(coliser) {
 
-    for (let index = 0; index <= 50; index++) {
-        dataAnalyse.push(arena());
+    for (let index = 1; index <= 50; index++) {
+        data.push(arena());
         Nemean.resurrected();
         Heracles.resurrected();
     }
    
 }
-console.info(dataAnalyse);
+//console.info(data);
+//console.info(data);
+const analyse = new DataAnalyse(data);
+console.log(analyse.playerWin());

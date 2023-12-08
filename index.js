@@ -6,8 +6,8 @@ const debug = false;
 const figth_club = false;
 const coliser = true;
 
-const Heracles = new Fighter('🧔 Heracles', 10, 6);
-const Nemean = new Fighter('🦁 Lion', 10, 6);
+const Heracles = new Fighter('🧔 Heracles', 20, 6);
+const Nemean = new Fighter('🦁 Lion', 12, 13);
 
 if(debug) {
     console.info(Heracles);
@@ -62,7 +62,7 @@ if (coliser) {
 const data = [];
 if(coliser) {
 
-    for (let index = 1; index <= 50; index++) {
+    for (let index = 1; index <= 12; index++) {
         data.push(arena());
         Nemean.resurrected();
         Heracles.resurrected();
@@ -72,4 +72,5 @@ if(coliser) {
 //console.info(data);
 //console.info(data);
 const analyse = new DataAnalyse(data);
+console.info(analyse.setArrayData());
 console.log(analyse.playerWin());

@@ -62,7 +62,7 @@ if (coliser) {
 const data = [];
 if(coliser) {
 
-    for (let index = 1; index <= 12; index++) {
+    for (let index = 1; index <= 600; index++) {
         data.push(arena());
         Nemean.resurrected();
         Heracles.resurrected();

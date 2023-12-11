@@ -35,8 +35,8 @@ const coliserum = (fighterA, fighterB) => {
         console.info(`Round ${round}`)
         fighterA.figth(fighterB);
         fighterB.figth(fighterA);
-        console.info(fighterA.setLife())
-        console.info(fighterB.setLife());
+       // console.info(fighterA.setLife())
+        //console.info(fighterB.setLife());
         if(debug) {
             console.log('Heracles dead ?'+fighterA.dead());
             console.log('Lion dead ?'+fighterB.dead());
@@ -57,6 +57,7 @@ const coliserum = (fighterA, fighterB) => {
 }
 
 if (coliser) {
-    coliserum(Heracles, boar);
-    coliserum(Heracles, Nemean);
+    //coliserum(Heracles, boar);
+   // Heracles.resurrected();
+    console.info(coliserum(Heracles, Nemean));
 }

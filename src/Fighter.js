@@ -1,4 +1,5 @@
 /* Fighter class definition */
+const Weapons = require('./Weapons')
 const MAX_LIFE = 100;
 
 class Fighter {
@@ -16,25 +17,34 @@ class Fighter {
         return `This ${this.name} have ${this.life} point of life.`;
     }
     dead() {
+
         if(this.life <= 0) {
             return true;
         } else {
             return false;
         }
     }
-    figth(figther) {
-        const  dammagePoint = Math.floor(Math.random() * figther.strength);
-        const dodge = Math.floor(Math.random() * this.dexterity);
-        const lostPointOfLife = dammagePoint - dodge;
-        if (lostPointOfLife>0) {
-            this.life = this.life - (dammagePoint - dodge);
+
+    Attack(name = null, damage = null) {
+        const stuff = new Weapons(name, damage)
+        return Math.floor(Math.random() * this.strength) + stuff.setDamage();
+    }
+    Dodge(name = null, damage = null) {
+        const stuff = new Weapons(name, damage)
+        return Math.floor(Math.random() * this.dexterity) + stuff.setDamage();
+    }
+    figth(statAttack, statDodge) {
+        const damage = statAttack - statDodge;
+        console.log(damage)
+        if(damage > 0) {
+            this.life = this.life - damage;
             this.dead();
-            return `${this.name} hit ${figther.name} attack = ${lostPointOfLife} !`;
-           
+            return `${this.name} hit => attack = ${damage} !`;
         } else {
-            return `${this.name} miss ${figther.name} !?`;
+            return `${this.name} miss !`;
         }
     }
+
     deadCaractere(figther) {
         if(this.dead()) {
             return `${this.name} is 💀, ${figther.name} 🏆 !`;

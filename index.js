@@ -7,49 +7,56 @@ const coliser = true;
 
 const Heracles = new Fighter('🧔 Heracles', 20, 6);
 const Nemean = new Fighter('🦁 Lion', 12, 13);
+/** Create the opponent  */
+const boar = new Fighter("🐗 Erymanthian Boar", 25, 12);
 
 if(debug) {
     console.info(Heracles);
-    console.info(Nemean);
+    console.info(boar);
     console.log(Heracles.setLife())
-    console.log(Nemean.setLife());
+    console.log(boar.setLife());
 }
 if(figth_club) {
     for (let index = 0; index < 20; index++) {
 
-        Heracles.figth(Nemean);
+        Heracles.figth(boar);
         Nemean.figth(Heracles);
         console.log(Heracles.setLife())
-        console.log(Nemean.setLife());
+        console.log(boar.setLife());
     }
 }
 
-
-if (coliser) {
+const coliserum = (fighterA, fighterB) => {
     let round = 0
     let go = true;
+    let resultFigth = [];
     do {
         round ++;
         console.info(`Round ${round}`)
-        Heracles.figth(Nemean);
-        Nemean.figth(Heracles);
-        console.info(Heracles.setLife())
-        console.info(Nemean.setLife());
+        fighterA.figth(fighterB);
+        fighterB.figth(fighterA);
+        console.info(fighterA.setLife())
+        console.info(fighterB.setLife());
         if(debug) {
-            console.log('Heracles dead ?'+Heracles.dead());
-            console.log('Lion dead ?'+Nemean.dead());
+            console.log('Heracles dead ?'+fighterA.dead());
+            console.log('Lion dead ?'+fighterB.dead());
         }
-            if (Heracles.dead()) {
-                go = !Heracles.dead();
+            if (fighterA.dead()) {
+                go = !fighterA.dead();
             }
-            if(Nemean.dead()){
-                go = !Nemean.dead();
+            if(fighterB.dead()){
+                go = !fighterB.dead();
             }
       } while (go);
       //console.log(go)
       if(!go)  {
-        console.info(Heracles.deadCaractere(Nemean));
-        console.info(Nemean.deadCaractere(Heracles));
+        resultFigth.push(fighterA.deadCaractere(fighterB));
+        resultFigth.push(fighterB.deadCaractere(fighterA));
+        return resultFigth;
       }
+}
 
+if (coliser) {
+    coliserum(Heracles, boar);
+    coliserum(Heracles, Nemean);
 }
